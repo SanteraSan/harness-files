@@ -2,8 +2,12 @@
 
 Сервис инструментов `read_file`, `list_dir` и `record_note` для HARNESS.
 
-Реализация ещё не начата. В репозитории пока только этот файл.
+Слушает только `127.0.0.1`. Живой конверт — `harness.tool.v2` (`POST /v1/tools/{name}`). Закрытый контракт `harness.tool.v1` остаётся в каталоге `contract/` репозитория HARNESS и на этот провод не ставится.
 
-Протокол задаёт спецификация HARNESS, контракт `harness.tool.v1`: каталог `docs/spec` в https://github.com/SanteraSan/HARNESS (рабочая ветка `dev`).
+Секрет — переменная `FILE_SERVICE_TOKEN`. В репозитории его нет: сравнение идёт по SHA-256. `GET /health` секрета не требует.
 
-Секреты, токены и строки подключения в этот репозиторий не кладутся.
+База — Postgres `harness_files`, тесты — `harness_files_test`. Строка подключения только в окружении.
+
+```bash
+npm test
+```
